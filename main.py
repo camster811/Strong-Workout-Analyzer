@@ -1,5 +1,4 @@
 import keyword
-
 import matplotlib
 import numpy as np
 import pandas as pd
@@ -11,9 +10,6 @@ import seaborn as sns
 
 matplotlib.use('TkAgg')
 
-toPounds = 2.20462
-toKgs = 1 / toPounds
-
 workout_history = pd.read_csv('strong.csv', header=None, sep=';', names=['Date', 'Workout Name', 'Exercise Name',
                                                                          'Set Order', 'Weight', 'Weight Unit', 'Reps',
                                                                          'RPE', 'Distance', 'Distance Unit', 'Seconds',
@@ -21,7 +17,7 @@ workout_history = pd.read_csv('strong.csv', header=None, sep=';', names=['Date',
 workout_history = workout_history.drop(columns=['Workout Notes', 'Notes'])
 
 workout_history = workout_history[(workout_history['Date'] > '2021-01-11')]
-
+# Define programs
 gslp = workout_history[workout_history['Workout Name'].str.startswith('GSLP')]
 gslp.name = 'GreySkull LP'
 
